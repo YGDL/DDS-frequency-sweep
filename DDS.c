@@ -38,7 +38,8 @@ void uart1_set(uint a)										//串口发送数据函数
 
 void write_freq0(ulong freq)						//FREQ0写数据
 {
-	uint L_REG,H_REG,reg;
+	uint L_REG,H_REG;
+	ulong reg;
 	reg=coefficient*freq;
 	L_REG=(reg&0x3fff)|0x4000;
 	H_REG=(reg>>14)|0x4000;					//通信数据处理
@@ -50,7 +51,8 @@ void write_freq0(ulong freq)						//FREQ0写数据
 
 void write_freq1(ulong freq)						//FREQ1写数据
 {
-	uint L_REG,H_REG,reg;
+	uint L_REG,H_REG;
+	ulong reg;
 	reg=coefficient*freq;
 	L_REG=(reg&0x3fff)|0x8000;
 	H_REG=(reg>>14)|0x8000;					//通信数据处理
@@ -82,7 +84,7 @@ void main()
 			write_freq1(freq);
 			flag=!flag;
 		}
-		freq=freq+10;
+		freq=freq+50;
 		if(freq>10000)
 			freq=100;
 	}

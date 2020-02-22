@@ -1,4 +1,4 @@
-C51 COMPILER V9.60.0.0   DDS                                                               02/22/2020 10:42:50 PAGE 1   
+C51 COMPILER V9.60.0.0   DDS                                                               02/22/2020 15:20:02 PAGE 1   
 
 
 C51 COMPILER V9.60.0.0, COMPILATION OF MODULE DDS
@@ -13,7 +13,7 @@ line level    source
    3          #define uchar unsigned char
    4          #define ulong unsigned long
    5          
-   6          #define coefficient       10.73741824
+   6          #define coefficient       10.73741824     //系数是2^28/MCLK得到的
    7          #define speed             1000
    8          
    9          sbit FSYNC = P3^2;
@@ -58,19 +58,19 @@ line level    source
   48   1        delay_us(speed);
   49   1      }
   50          
-  51          void write_freq1(ulong freq)            //FREQ1写数据
+  51          /*void write_freq1(ulong freq)            //FREQ1写数据
   52          {
-  53   1        uint L_REG,H_REG,reg;
-  54   1        reg=coefficient*freq;
-C51 COMPILER V9.60.0.0   DDS                                                               02/22/2020 10:42:50 PAGE 2   
+  53            uint L_REG,H_REG,reg;
+  54            reg=coefficient*freq;
+C51 COMPILER V9.60.0.0   DDS                                                               02/22/2020 15:20:02 PAGE 2   
 
-  55   1        L_REG=(reg&0x3fff)|0x8000;
-  56   1        H_REG=(reg>>14)|0x8000;         //通信数据处理
-  57   1        uart1_set(L_REG);
-  58   1        uart1_set(H_REG);
-  59   1        uart1_set(0x2800);
-  60   1        delay_us(speed);
-  61   1      }
+  55            L_REG=(reg&0x3fff)|0x8000;
+  56            H_REG=(reg>>14)|0x8000;         //通信数据处理
+  57            uart1_set(L_REG);
+  58            uart1_set(H_REG);
+  59            uart1_set(0x2800);
+  60            delay_us(speed);
+  61          }*/
   62          
   63          void main()
   64          {
@@ -82,31 +82,32 @@ line level    source
   70   1        IE=0x90;                              //开启中断EA=1,ES=1
   71   1        uart1_set(0x2100);
   72   1        uart1_set(0xC000);
-  73   1        while(1)
-  74   1        {
-  75   2          if(!flag)
-  76   2          {
-  77   3            write_freq0(freq);
-  78   3            flag=!flag;
-  79   3          }
-  80   2          else
-  81   2          {
-  82   3            write_freq1(freq);
-  83   3            flag=!flag;
-  84   3          }
-  85   2          freq=freq+10;
-  86   2          if(freq>10000)
-  87   2            freq=100;
-  88   2        }
-  89   1      }
+  73   1        write_freq0(10000);
+  74   1        /*while(1)
+  75   1        {
+  76   1          if(!flag)
+  77   1          {
+  78   1            write_freq0(freq);
+  79   1            flag=!flag;
+  80   1          }
+  81   1          else
+  82   1          {
+  83   1            write_freq1(freq);
+  84   1            flag=!flag;
+  85   1          }
+  86   1          freq=freq+50;
+  87   1          if(freq>10000)
+  88   1            freq=100;
+  89   1        }*/
+  90   1      }
 
 
 MODULE INFORMATION:   STATIC OVERLAYABLE
-   CODE SIZE        =    457    ----
+   CODE SIZE        =    318    ----
    CONSTANT SIZE    =   ----    ----
    XDATA SIZE       =   ----    ----
    PDATA SIZE       =   ----    ----
-   DATA SIZE        =   ----      14
+   DATA SIZE        =   ----      12
    IDATA SIZE       =   ----    ----
    BIT SIZE         =   ----       1
 END OF MODULE INFORMATION.

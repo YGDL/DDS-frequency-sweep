@@ -1,4 +1,4 @@
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/22/2020  10:42:50  PAGE 1
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                    02/22/2020  15:20:02  PAGE 1
 
 
 BL51 BANKED LINKER/LOCATER V6.22.2.0, INVOKED BY:
@@ -41,12 +41,11 @@ LINK MAP OF MODULE:  .\Objects\DDS (?C_STARTUP)
                     0012H     0011H                  *** GAP ***
             CODE    0023H     0003H     ABSOLUTE     
             CODE    0026H     01E4H     UNIT         ?C?LIB_CODE
-            CODE    020AH     006CH     UNIT         ?PR?MAIN?DDS
-            CODE    0276H     0068H     UNIT         ?PR?_BIT_INVERSION?DDS
-            CODE    02DEH     0049H     UNIT         ?PR?_WRITE_FREQ0?DDS
-            CODE    0327H     0049H     UNIT         ?PR?_WRITE_FREQ1?DDS
-            CODE    0370H     0036H     UNIT         ?PR?_DELAY_US?DDS
-            CODE    03A6H     002AH     UNIT         ?PR?_UART1_SET?DDS
+            CODE    020AH     0068H     UNIT         ?PR?_BIT_INVERSION?DDS
+            CODE    0272H     0049H     UNIT         ?PR?_WRITE_FREQ0?DDS
+            CODE    02BBH     0036H     UNIT         ?PR?_DELAY_US?DDS
+            CODE    02F1H     002AH     UNIT         ?PR?_UART1_SET?DDS
+            CODE    031BH     002AH     UNIT         ?PR?MAIN?DDS
 
 
 
@@ -59,13 +58,12 @@ SEGMENT                           BIT_GROUP          DATA_GROUP
 ?C_C51STARTUP                  -----    -----      -----    -----
   +--> ?PR?MAIN?DDS
 
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  10:42:50  PAGE 2
-
-
 ?PR?MAIN?DDS                   0020H.0  0000H.1    0008H    0004H
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  15:20:02  PAGE 2
+
+
   +--> ?PR?_UART1_SET?DDS
   +--> ?PR?_WRITE_FREQ0?DDS
-  +--> ?PR?_WRITE_FREQ1?DDS
 
 ?PR?_UART1_SET?DDS             -----    -----      000EH    0002H
   +--> ?PR?_BIT_INVERSION?DDS
@@ -74,10 +72,6 @@ SEGMENT                           BIT_GROUP          DATA_GROUP
 ?PR?_DELAY_US?DDS              -----    -----      0010H    0004H
 
 ?PR?_WRITE_FREQ0?DDS           -----    -----      000CH    0002H
-  +--> ?PR?_UART1_SET?DDS
-  +--> ?PR?_DELAY_US?DDS
-
-?PR?_WRITE_FREQ1?DDS           -----    -----      000CH    0002H
   +--> ?PR?_UART1_SET?DDS
   +--> ?PR?_DELAY_US?DDS
 
@@ -119,20 +113,20 @@ SYMBOL TABLE OF MODULE:  .\Objects\DDS (?C_STARTUP)
   C:0006H         LINE#         135
   C:0007H         LINE#         136
   C:0009H         LINE#         185
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  10:42:50  PAGE 3
-
-
   C:000CH         LINE#         196
   -------         ENDMOD        ?C_STARTUP
 
   -------         MODULE        DDS
   C:0000H         SYMBOL        _ICE_DUMMY_
   D:0080H         PUBLIC        P0
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  15:20:02  PAGE 3
+
+
   D:0090H         PUBLIC        P1
   D:00A0H         PUBLIC        P2
   D:00B0H         PUBLIC        P3
   D:00C0H         PUBLIC        P4
-  C:0276H         PUBLIC        _bit_inversion
+  C:020AH         PUBLIC        _bit_inversion
   B:00B0H.2       PUBLIC        FSYNC
   D:00C8H         PUBLIC        P5
   D:00E8H         PUBLIC        P6
@@ -140,17 +134,16 @@ SYMBOL TABLE OF MODULE:  .\Objects\DDS (?C_STARTUP)
   D:00A8H         PUBLIC        IE
   D:00B8H         PUBLIC        IP
   B:0098H.1       PUBLIC        TI
-  C:03A6H         PUBLIC        _uart1_set
+  C:02F1H         PUBLIC        _uart1_set
   D:00D8H         PUBLIC        CCON
-  C:020AH         PUBLIC        main
+  C:031BH         PUBLIC        main
   D:0099H         PUBLIC        SBUF
   D:0098H         PUBLIC        SCON
   D:0088H         PUBLIC        TCON
   D:008EH         PUBLIC        AUXR
-  C:0370H         PUBLIC        _delay_us
-  C:02DEH         PUBLIC        _write_freq0
+  C:02BBH         PUBLIC        _delay_us
+  C:0272H         PUBLIC        _write_freq0
   C:000FH         PUBLIC        uart1
-  C:0327H         PUBLIC        _write_freq1
   D:00D0H         PUBLIC        PSW
   -------         PROC          UART1
   C:000FH         LINE#         11
@@ -159,36 +152,36 @@ SYMBOL TABLE OF MODULE:  .\Objects\DDS (?C_STARTUP)
   -------         ENDPROC       UART1
   -------         PROC          _DELAY_US
   D:0010H         SYMBOL        us
-  C:0370H         LINE#         16
-  C:0378H         LINE#         17
-  C:0378H         LINE#         18
-  C:03A5H         LINE#         19
+  C:02BBH         LINE#         16
+  C:02C3H         LINE#         17
+  C:02C3H         LINE#         18
+  C:02F0H         LINE#         19
   -------         ENDPROC       _DELAY_US
   -------         PROC          _BIT_INVERSION
   D:0004H         SYMBOL        a
-  C:0276H         LINE#         21
-  C:0278H         LINE#         22
-  C:0278H         LINE#         23
-  C:0292H         LINE#         24
-  C:02B4H         LINE#         25
-  C:02DAH         LINE#         26
-  C:02DDH         LINE#         27
+  C:020AH         LINE#         21
+  C:020CH         LINE#         22
+  C:020CH         LINE#         23
+  C:0226H         LINE#         24
+  C:0248H         LINE#         25
+  C:026EH         LINE#         26
+  C:0271H         LINE#         27
   -------         ENDPROC       _BIT_INVERSION
   -------         PROC          _UART1_SET
   D:000EH         SYMBOL        a
-  C:03A6H         LINE#         29
-  C:03AAH         LINE#         30
-  C:03AAH         LINE#         31
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  10:42:50  PAGE 4
-
-
-  C:03ACH         LINE#         32
-  C:03B6H         LINE#         33
-  C:03B9H         LINE#         34
-  C:03C2H         LINE#         35
-  C:03CDH         LINE#         36
-  C:03CFH         LINE#         37
+  C:02F1H         LINE#         29
+  C:02F5H         LINE#         30
+  C:02F5H         LINE#         31
+  C:02F7H         LINE#         32
+  C:0301H         LINE#         33
+  C:0304H         LINE#         34
+  C:030DH         LINE#         35
+  C:0318H         LINE#         36
+  C:031AH         LINE#         37
   -------         ENDPROC       _UART1_SET
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  15:20:02  PAGE 4
+
+
   -------         PROC          _WRITE_FREQ0
   D:0004H         SYMBOL        freq
   -------         DO            
@@ -196,64 +189,30 @@ SYMBOL TABLE OF MODULE:  .\Objects\DDS (?C_STARTUP)
   D:000CH         SYMBOL        H_REG
   D:0004H         SYMBOL        reg
   -------         ENDDO         
-  C:02DEH         LINE#         39
-  C:02DEH         LINE#         40
-  C:02DEH         LINE#         42
-  C:02F2H         LINE#         43
-  C:02FAH         LINE#         44
-  C:0307H         LINE#         45
-  C:030EH         LINE#         46
-  C:0315H         LINE#         47
-  C:031CH         LINE#         48
+  C:0272H         LINE#         39
+  C:0272H         LINE#         40
+  C:0272H         LINE#         42
+  C:0286H         LINE#         43
+  C:028EH         LINE#         44
+  C:029BH         LINE#         45
+  C:02A2H         LINE#         46
+  C:02A9H         LINE#         47
+  C:02B0H         LINE#         48
   -------         ENDPROC       _WRITE_FREQ0
-  -------         PROC          _WRITE_FREQ1
-  D:0004H         SYMBOL        freq
-  -------         DO            
-  D:0002H         SYMBOL        L_REG
-  D:000CH         SYMBOL        H_REG
-  D:0004H         SYMBOL        reg
-  -------         ENDDO         
-  C:0327H         LINE#         51
-  C:0327H         LINE#         52
-  C:0327H         LINE#         54
-  C:033BH         LINE#         55
-  C:0343H         LINE#         56
-  C:0350H         LINE#         57
-  C:0357H         LINE#         58
-  C:035EH         LINE#         59
-  C:0365H         LINE#         60
-  -------         ENDPROC       _WRITE_FREQ1
   -------         PROC          MAIN
   -------         DO            
   D:0008H         SYMBOL        freq
   B:0020H.0       SYMBOL        flag
   -------         ENDDO         
-  C:020AH         LINE#         63
-  C:020AH         LINE#         64
-  C:020AH         LINE#         65
-  C:0214H         LINE#         66
-  C:0216H         LINE#         68
-  C:0219H         LINE#         70
-  C:021CH         LINE#         71
-  C:0222H         LINE#         72
-  C:0229H         LINE#         73
-  C:0229H         LINE#         74
-  C:0229H         LINE#         75
-BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  10:42:50  PAGE 5
-
-
-  C:0234H         LINE#         76
-  C:0234H         LINE#         77
-  C:0237H         LINE#         78
-  C:0239H         LINE#         79
-  C:023BH         LINE#         81
-  C:023BH         LINE#         82
-  C:023EH         LINE#         83
-  C:0240H         LINE#         84
-  C:0240H         LINE#         85
-  C:0255H         LINE#         86
-  C:026AH         LINE#         87
-  C:0274H         LINE#         88
+  C:031BH         LINE#         63
+  C:031BH         LINE#         64
+  C:031BH         LINE#         65
+  C:0325H         LINE#         66
+  C:0327H         LINE#         68
+  C:032AH         LINE#         70
+  C:032DH         LINE#         71
+  C:0333H         LINE#         72
+  C:033AH         LINE#         73
   -------         ENDPROC       MAIN
   -------         ENDMOD        DDS
 
@@ -279,5 +238,8 @@ SYMBOL TABLE OF MODULE:  .\Objects\DDS (?C_STARTUP)
   C:01F9H         PUBLIC        ?C?ULCMP
   -------         ENDMOD        ?C?ULCMP
 
-Program Size: data=21.1 xdata=0 code=959
+Program Size: data=21.1 xdata=0 code=820
+BL51 BANKED LINKER/LOCATER V6.22.2.0                                                  02/22/2020  15:20:02  PAGE 5
+
+
 LINK/LOCATE RUN COMPLETE.  0 WARNING(S),  0 ERROR(S)
