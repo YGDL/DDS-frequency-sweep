@@ -1,0 +1,4 @@
+".\Objects\STARTUP.obj",
+".\Objects\DDS.obj" 
+TO ".\Objects\DDS" 
+PRINT(".\Listings\DDS.m51") RAMSIZE(256) 
